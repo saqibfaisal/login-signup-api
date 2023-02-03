@@ -15,11 +15,10 @@ const UserSchema = new mongoose.Schema({
         type: String,
         require: true,
     },
-    contact: {
+    confirmpassword: {
         require: true,
         type: String,
-        maxlength: 11,
-    }
+    },
 })
 const UserModel = mongoose.model("user", UserSchema)
 module.exports = UserModel; 

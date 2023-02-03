@@ -3,22 +3,21 @@ const bcryptjs = require("bcryptjs")
 const signupController = async (req, res) => {
     // console.log("hit", req.body);
     const { username, email, password, confirmpassword } = req.body
-
     if (!username, !email, !password, !confirmpassword) {
         return res.json({ message: "Required field are missing" })
     }
+    else if (password != confirmpassword) {
+        return res
+            .status(400)
+            .send({ status: 400, message: "not match the password" });
+    }
     else {
-
         const hashPassword = await bcryptjs.hash(password, 10);
-        // console.log(hashPassword, "hashPassword");
         const userObj = {
             ...req.body,
             password: hashPassword
         }
-        // console.log(userObj);
         UserModel.findOne({ email }, (error, user) => {
-            // console.log(user);
-            // console.log(error);
             if (error) {
                 res.send(error);
             } else if (user) {
