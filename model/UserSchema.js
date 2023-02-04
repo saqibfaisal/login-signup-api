@@ -19,6 +19,10 @@ const UserSchema = new mongoose.Schema({
         require: true,
         type: String,
     },
+    usertype:{
+        type:String,
+        default:"User",
+    }
 })
 const UserModel = mongoose.model("user", UserSchema)
 module.exports = UserModel; 
