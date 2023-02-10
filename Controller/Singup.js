@@ -2,15 +2,15 @@ const UserModel = require("../model/UserSchema");
 const bcryptjs = require("bcryptjs")
 const signupController = async (req, res) => {
     // console.log("hit", req.body);
-    const { username, email, password, confirmpassword } = req.body
-    if (!username, !email, !password, !confirmpassword) {
+    const { email, password } = req.body
+    if (!email, !password) {
         return res.json({ message: "Required field are missing" })
     }
-    else if (password != confirmpassword) {
-        return res
-            .status(400)
-            .send({ status: 400, message: "not match the password" });
-    }
+    // else if (password != confirmpassword) {
+    //     return res
+    //         .status(400)
+    //         .send({ status: 400, message: "not match the password" });
+    // }
     else {
         const hashPassword = await bcryptjs.hash(password, 10);
         const userObj = {
