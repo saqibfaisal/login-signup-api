@@ -2,19 +2,33 @@ const mongoose = require("mongoose");
 
 
 const ApplicationSchema = new mongoose.Schema({
-    title: {
+    name: {
         type: String,
+        required: false
     },
-    decription: {
-        type: String,
-    },
-    id: {
+    price: {
         type: Number,
+        required: false
     },
-    // confirmpassword: {
-    //     require: true,
-    //     type: String,
-    // },
+    size: {
+        type: String,
+        required: false
+    },
+    overview: {
+        type: Object,
+        required: true
+    },
+    plant_bio: {
+        type: String,
+        required: false
+    },
+    category: {
+        type: String
+    },
+    image: {
+        type: String,
+        required: false
+    }
 })
-const ApplicationModel = mongoose.model("application", ApplicationSchema)
-module.exports = ApplicationModel; 
+const Cart_model = mongoose.model("application", ApplicationSchema)
+module.exports = Cart_model; 
